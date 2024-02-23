@@ -1,0 +1,3 @@
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/02_vtk/CMakeFiles/d20.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/02_vtk/CMakeFiles/edit_cache.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/02_vtk/CMakeFiles/rebuild_cache.dir
