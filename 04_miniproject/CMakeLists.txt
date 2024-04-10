@@ -7,9 +7,14 @@ cmake_minimum_required(VERSION 3.5)
 
 set(PROJECT_NAME_1 demo_spherical_wave)
 set(PROJECT_NAME_2 demo_plane_wave)
+set(PROJECT_NAME_3 demo_plane_wave_modified)
+set(PROJECT_NAME_4 demo_Youngs_experiment)
+set(CMAKE_CXX_FLAGS "-O2")
 
 project(${PROJECT_NAME_1})
 project(${PROJECT_NAME_2})
+project(${PROJECT_NAME_3})
+project(${PROJECT_NAME_4})
 
 # Set CMake behavior
 cmake_policy(SET CMP0004 NEW)
@@ -46,12 +51,19 @@ endif()
 # Executable
 add_executable(${PROJECT_NAME_1} spherical_wave.cpp)
 add_executable(${PROJECT_NAME_2} plane_wave.cpp)
+add_executable(${PROJECT_NAME_3} plane_wave_modified.cpp)
+add_executable(${PROJECT_NAME_4} Youngs_experiment.cpp)
+
 
 # Target libraries
 target_link_libraries(${PROJECT_NAME_1} dolfin)
 target_link_libraries(${PROJECT_NAME_1} ${GMSH_LIBRARY})
 target_link_libraries(${PROJECT_NAME_2} dolfin)
 target_link_libraries(${PROJECT_NAME_2} ${GMSH_LIBRARY})
+target_link_libraries(${PROJECT_NAME_3} dolfin)
+target_link_libraries(${PROJECT_NAME_3} ${GMSH_LIBRARY})
+target_link_libraries(${PROJECT_NAME_4} dolfin)
+target_link_libraries(${PROJECT_NAME_4} ${GMSH_LIBRARY})
 
 # Test targets
 set(test_parameters -np 3 ${MPIEXEC_PARAMS} "./${PROJECT_NAME_1}")
@@ -60,4 +72,10 @@ add_test(NAME ${PROJECT_NAME_1}_serial COMMAND ${PROJECT_NAME_1})
 set(test_parameters -np 3 ${MPIEXEC_PARAMS} "./${PROJECT_NAME_2}")
 add_test(NAME ${PROJECT_NAME_2}_mpi COMMAND "mpirun" ${test_parameters})
 add_test(NAME ${PROJECT_NAME_2}_serial COMMAND ${PROJECT_NAME_2})
+set(test_parameters -np 3 ${MPIEXEC_PARAMS} "./${PROJECT_NAME_3}")
+add_test(NAME ${PROJECT_NAME_3}_mpi COMMAND "mpirun" ${test_parameters})
+add_test(NAME ${PROJECT_NAME_3}_serial COMMAND ${PROJECT_NAME_3})
+set(test_parameters -np 3 ${MPIEXEC_PARAMS} "./${PROJECT_NAME_4}")
+add_test(NAME ${PROJECT_NAME_4}_mpi COMMAND "mpirun" ${test_parameters})
+add_test(NAME ${PROJECT_NAME_4}_serial COMMAND ${PROJECT_NAME_4})
 

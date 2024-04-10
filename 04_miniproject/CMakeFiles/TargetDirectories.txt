@@ -1,0 +1,6 @@
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/04_miniproject/CMakeFiles/demo_spherical_wave.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/04_miniproject/CMakeFiles/demo_plane_wave.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/04_miniproject/CMakeFiles/demo_plane_wave_modified.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/04_miniproject/CMakeFiles/demo_Youngs_experiment.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/04_miniproject/CMakeFiles/edit_cache.dir
+/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/04_miniproject/CMakeFiles/rebuild_cache.dir

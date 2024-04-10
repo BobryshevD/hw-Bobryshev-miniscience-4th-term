@@ -1,0 +1,21 @@
+from ufl_legacy import (Coefficient, ds, dot, dx, FiniteElement,
+                 grad, inner, lhs, rhs, 
+                 triangle, TestFunction, TrialFunction)
+
+
+element = FiniteElement("Lagrange", triangle, 1)
+
+I = TrialFunction(element)
+v = TestFunction(element)
+I_all = Coefficient(element)
+i = Coefficient(element)
+
+a = I*v*dx;
+L = (I_all/i)*v*dx;
+
+# Before the form file can be used in the C++ program, it must be
+# compiled using FFC by running (on the command-line):
+# 
+# .. code-block:: sh
+# 
+#    ffc -l dolfin Mean.ufl

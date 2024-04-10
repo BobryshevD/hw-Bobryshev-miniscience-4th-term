@@ -2722,7 +2722,7 @@ return enabled;
         for (int ic = 0; ic < 3; ++ic)
             w0 += w[0][ic] * FE3_C0_Q3[0][iq][ic];
         alignas(32) double sv3[7];
-        sv3[0] = 25 * w0 * w0;
+        sv3[0] = 225 * w0 * w0;
         sv3[1] = sp[13] * sv3[0];
         sv3[2] = sp[14] * sv3[0];
         sv3[3] = sp[15] * sv3[0];
@@ -2873,7 +2873,7 @@ public:
 
   const char * signature() const final override
   {
-    return "b80a129f5d78cf651bceb11d327a8c356044fbd5ae91e8361bb1f3b1a84eb2293037ee822ca02aa8c69b8d3e0c50d9f48adb4da1cc6d72d77852360274d1950a";
+    return "998bd0721237dfeb0e9effad989806a111c07d3e5a2e7464178afed8029acae56663d5cfd1244b93778bebf3d5a00d06a69a1a021b312efe3ff86fb1dfe3145e";
   }
 
   std::size_t rank() const final override

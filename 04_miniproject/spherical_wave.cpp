@@ -8,31 +8,31 @@ using namespace dolfin;
 class Boundary_Func : public Expression
 {
 public:
-  Boundary_Func(): t(0) {}
+  Boundary_Func() : t(0) {}
   // Define boundary condition
-  void eval(Array<double>& values, const Array<double>& x) const
+  void eval(Array<double> &values, const Array<double> &x) const
   {
-    values[0] = 30*cos(50*t);
+    values[0] = 30 * cos(80 * t);
   }
   double t;
 };
 
 class DirichletBoundary : public SubDomain
 {
-  bool inside(const Array<double>& x, bool on_boundary) const
+  bool inside(const Array<double> &x, bool on_boundary) const
   {
-    double c = 1.0/40;
-    return (x[0] < c) and (x[0] > -c) and (x[1] < c) and (x[1] > -c);
+    double c1 = 1.0 / 20;
+    return ((x[0] < c1 + 0.5) and (x[0] > -c1 + 0.5) and (x[1] < c1 + 0.5) and (x[1] > -c1 + 0.5)) || ((x[0] < c1 - 0.5) and (x[0] > -c1 - 0.5) and (x[1] < c1 - 0.5) and (x[1] > -c1 - 0.5));
   }
 };
 
 int main()
 {
-  std::array<Point, 2> a1 = {Point(-1, -1), Point(1, 1)};
-  std::array<long unsigned int, 2> a2 = {80, 80};
+  std::array<Point, 2> a1 = {Point(-2, -2), Point(2, 2)};
+  std::array<long unsigned int, 2> a2 = {400, 400};
   auto mesh = std::make_shared<Mesh>(RectangleMesh::create(a1, a2, CellType::Type::triangle));
   auto V = std::make_shared<Wave_equation::FunctionSpace>(mesh);
-  
+
   auto u0 = std::make_shared<Boundary_Func>();
   auto boundary = std::make_shared<DirichletBoundary>();
   DirichletBC bc(V, u0, boundary);
@@ -49,14 +49,14 @@ int main()
   auto g = std::make_shared<Constant>(0);
   a.dt = k;
 
-  for (int i = 0; i<1000; i++)
+  for (int i = 0; i < 200; i++)
   {
-    u0->t = i*dt;
+    u0->t = i * dt;
     DirichletBC bc(V, u0, boundary);
     L.u_pr = u_pr;
     L.u_prpr = u_prpr;
     solve(a == L, *u, bc);
-    
+
     std::cout << u0->t << '\n';
 
     std::string fileName = "snapshots_spherical_wave/wave_equation-" + std::to_string(i) + ".pvd";
@@ -66,7 +66,6 @@ int main()
     *u_prpr = *u_pr;
     *u_pr = *u;
   }
-
 
   return 0;
 }
