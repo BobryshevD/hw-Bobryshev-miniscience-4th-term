@@ -27,13 +27,11 @@ class DirichletBoundary : public SubDomain //граница
     }
 };
 
-class Indicator : public Expression //экран
+class Indicator : public Expression //!!!Область с другим показателем преломления!!!
 {
     void eval(Array<double> &values, const Array<double> &x) const
     {
-        if (((x[1] > 0.1) or (x[1] < -0.1)) and ((x[0] > -0.5) and (x[0] < -0.3))) values[0] = 2*x[0] + 1;
-        else if ((x[0] > -0.3) && ((x[1] > 0.9) || (x[1]) < -0.9)) values[0] = 1/10;
-        else if (x[0] > 0.9) values[0] = 1/10;
+        if (2*x[0] - x[1] > 0) values[0] = 1;
         //else if (x[0] < 0) values[0] = 2*x[0] + 1;
         else values[0] = 0;
     }
@@ -42,8 +40,8 @@ class Indicator : public Expression //экран
 int main()
 {
     //Create mesh
-    std::array<Point, 2> a1 = {Point(-1, -1), Point(1, 1)};
-    std::array<long unsigned int, 2> a2 = {100, 100};
+    std::array<Point, 2> a1 = {Point(-1, -1), Point(2, 1)};
+    std::array<long unsigned int, 2> a2 = {100, 150};
     auto mesh = std::make_shared<Mesh>(RectangleMesh::create(a1, a2, CellType::Type::triangle));
     auto V = std::make_shared<Wave_equation::FunctionSpace>(mesh);
 
@@ -65,9 +63,9 @@ int main()
     auto u = std::make_shared<Function>(V);
     //auto g = std::make_shared<Constant>(0);
     a.dt = k;
-    L.dt = k;
+    //L.dt = k;
     a.indicator = ind;
-    L.indicator = ind;
+    //L.indicator = ind;
     for (int i = 0; i < 10000; i++)
     {
         u0->t = i * dt; //обозначение момента времени для граничной функции

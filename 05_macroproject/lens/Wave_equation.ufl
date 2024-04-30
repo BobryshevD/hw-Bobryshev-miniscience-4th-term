@@ -12,15 +12,15 @@ v = TestFunction(element)
 dt = Coefficient(element)
 u_pr = Coefficient(element)
 u_prpr = Coefficient(element)
-indicator = Coefficient(element)
+indicator = Coefficient(element) 
 a = as_vector([1.0, 1.0])
 
 i = Index()
-c = 15
+c = 15/(1+indicator) 
 E = 1000
 
-a = inner(u, v) * dx + c * c * dt * dt * inner(grad(u), grad(v)) * dx + c * E * dt * indicator * inner(u, v) * dx# - 10 * indicator * c * c * dt * dt * inner(grad(u), a) * v * dx
-L = 2*inner(u_pr,v)*dx-inner(u_prpr,v)*dx + c * E * indicator * dt * inner(u_pr, v) * dx
+a = inner(u, v) * dx + c * c * dt * dt * inner(grad(u), grad(v)) * dx 
+L = 2*inner(u_pr,v)*dx-inner(u_prpr,v)*dx
 
 # Before the form file can be used in the C++ program, it must be
 # compiled using FFC by running (on the command-line):

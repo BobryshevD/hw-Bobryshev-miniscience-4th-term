@@ -2687,6 +2687,10 @@ return enabled;
             { 0.4459484909159651, 0.10810301816807, 0.445948490915965 },
             { 0.4459484909159651, 0.4459484909159651, 0.10810301816807 },
             { 0.10810301816807, 0.4459484909159651, 0.445948490915965 } } };
+    alignas(32) static const double PI0[1][3][3] =
+        { { { 0.08333333333333326, 0.04166666666666659, 0.04166666666666659 },
+            { 0.04166666666666659, 0.08333333333333337, 0.04166666666666664 },
+            { 0.04166666666666659, 0.04166666666666664, 0.08333333333333334 } } };
     // Unstructured piecewise computations
     const double J_c0 = coordinate_dofs[0] * FE3_C0_D01_Q6[0][0][0] + coordinate_dofs[2] * FE3_C0_D01_Q6[0][0][1];
     const double J_c3 = coordinate_dofs[1] * FE3_C0_D01_Q6[0][0][0] + coordinate_dofs[5] * FE3_C0_D01_Q6[0][0][1];
@@ -2712,46 +2716,46 @@ return enabled;
     sp[16] = std::abs(sp[2]);
     alignas(32) double TP0[2] = {};
     alignas(32) double TP1[2] = {};
-    alignas(32) double BF0[3][3] = {};
     alignas(32) double TP2[2] = {};
     for (int iq = 0; iq < 6; ++iq)
     {
         // Quadrature loop body setup (num_points=6)
         // Unstructured varying computations for num_points=6
-        double w0 = 0.0;
-        for (int ic = 0; ic < 3; ++ic)
-            w0 += w[0][ic] * FE3_C0_Q6[0][iq][ic];
         double w1 = 0.0;
         for (int ic = 0; ic < 3; ++ic)
             w1 += w[1][ic] * FE3_C0_Q6[0][iq][ic];
+        double w0 = 0.0;
+        for (int ic = 0; ic < 3; ++ic)
+            w0 += w[0][ic] * FE3_C0_Q6[0][iq][ic];
         alignas(32) double sv6[9];
-        sv6[0] = 15000 * w0 * w1;
-        sv6[1] = 225 * w0 * w0;
-        sv6[2] = sp[13] * sv6[1];
-        sv6[3] = sp[14] * sv6[1];
-        sv6[4] = sp[15] * sv6[1];
-        sv6[5] = (1.0 + sv6[0]) * sp[16];
-        sv6[6] = sv6[2] * sp[16];
-        sv6[7] = sv6[3] * sp[16];
-        sv6[8] = sv6[4] * sp[16];
+        sv6[0] = 15 / (1 + w1) * (15 / (1 + w1));
+        sv6[1] = sv6[0] * w0;
+        sv6[2] = sv6[1] * w0;
+        sv6[3] = sp[13] * sv6[2];
+        sv6[4] = sp[14] * sv6[2];
+        sv6[5] = sp[15] * sv6[2];
+        sv6[6] = sv6[3] * sp[16];
+        sv6[7] = sv6[4] * sp[16];
+        sv6[8] = sv6[5] * sp[16];
         const double fw0 = sv6[8] * weights6[iq];
         for (int j = 0; j < 2; ++j)
             TP0[j] += fw0 * FE3_C0_D01_Q6[0][0][j];
         const double fw1 = sv6[7] * weights6[iq];
         for (int j = 0; j < 2; ++j)
             TP1[j] += fw1 * FE3_C0_D01_Q6[0][0][j];
-        const double fw2 = sv6[5] * weights6[iq];
-        alignas(32) double TF0[3];
-        for (int i = 0; i < 3; ++i)
-            TF0[i] = fw2 * FE3_C0_Q6[0][iq][i];
-        for (int i = 0; i < 3; ++i)
-            for (int j = 0; j < 3; ++j)
-                BF0[i][j] += TF0[i] * FE3_C0_Q6[0][iq][j];
-        const double fw3 = sv6[6] * weights6[iq];
+        const double fw2 = sv6[6] * weights6[iq];
         for (int j = 0; j < 2; ++j)
-            TP2[j] += fw3 * FE3_C0_D01_Q6[0][0][j];
+            TP2[j] += fw2 * FE3_C0_D01_Q6[0][0][j];
     }
-    std::fill(A, A + 9, 0.0);
+    A[0] = sp[16] * PI0[0][0][0];
+    A[1] = sp[16] * PI0[0][0][1];
+    A[2] = sp[16] * PI0[0][0][2];
+    A[3] = sp[16] * PI0[0][1][0];
+    A[4] = sp[16] * PI0[0][1][1];
+    A[5] = sp[16] * PI0[0][1][2];
+    A[6] = sp[16] * PI0[0][2][0];
+    A[7] = sp[16] * PI0[0][2][1];
+    A[8] = sp[16] * PI0[0][2][2];
     static const int DM0[2] = { 0, 2 };
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
@@ -2759,9 +2763,6 @@ return enabled;
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
             A[3 * i + DM0[j]] += FE3_C0_D01_Q6[0][0][i] * TP1[j];
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-            A[3 * i + j] += BF0[i][j];
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
             A[3 * DM0[i] + j] += FE3_C0_D01_Q6[0][0][i] * TP1[j];
@@ -2789,7 +2790,7 @@ public:
 
   const std::vector<bool> & enabled_coefficients() const final override
   {
-static const std::vector<bool> enabled({true, true, true, true});
+static const std::vector<bool> enabled({true, true});
 return enabled;
   }
 
@@ -2805,68 +2806,56 @@ return enabled;
     // num_cells:         None
     // optimize:          True
     // precision:         16
-    // quadrature_degree: 4
+    // quadrature_degree: 2
     // quadrature_rule:   'default'
     // representation:    'uflacs'
     // 
     // and the following integral 0 metadata:
     // 
-    // estimated_polynomial_degree: 4
+    // estimated_polynomial_degree: 2
     // optimize:                    True
     // precision:                   16
-    // quadrature_degree:           4
+    // quadrature_degree:           2
     // quadrature_rule:             'default'
     // representation:              'uflacs'
     // Quadrature rules
-    alignas(32) static const double weights6[6] = { 0.054975871827661, 0.054975871827661, 0.054975871827661, 0.1116907948390055, 0.1116907948390055, 0.1116907948390055 };
+    alignas(32) static const double weights3[3] = { 0.1666666666666667, 0.1666666666666667, 0.1666666666666667 };
     // Precomputed values of basis functions and precomputations
     // FE* dimensions: [entities][points][dofs]
     // PI* dimensions: [entities][dofs][dofs] or [entities][dofs]
     // PM* dimensions: [entities][dofs][dofs]
-    alignas(32) static const double FE3_C0_D01_Q6[1][1][2] = { { { -1.0, 1.0 } } };
-    alignas(32) static const double FE3_C0_Q6[1][6][3] =
-        { { { 0.09157621350977002, 0.8168475729804591, 0.09157621350977099 },
-            { 0.09157621350977008, 0.09157621350977108, 0.816847572980459 },
-            { 0.8168475729804581, 0.09157621350977098, 0.09157621350977099 },
-            { 0.4459484909159651, 0.10810301816807, 0.445948490915965 },
-            { 0.4459484909159651, 0.4459484909159651, 0.10810301816807 },
-            { 0.10810301816807, 0.4459484909159651, 0.445948490915965 } } };
+    alignas(32) static const double FE3_C0_D01_Q3[1][1][2] = { { { -1.0, 1.0 } } };
+    alignas(32) static const double FE3_C0_Q3[1][3][3] =
+        { { { 0.6666666666666669, 0.1666666666666666, 0.1666666666666667 },
+            { 0.1666666666666667, 0.1666666666666666, 0.6666666666666665 },
+            { 0.1666666666666667, 0.6666666666666666, 0.1666666666666666 } } };
     // Unstructured piecewise computations
-    const double J_c0 = coordinate_dofs[0] * FE3_C0_D01_Q6[0][0][0] + coordinate_dofs[2] * FE3_C0_D01_Q6[0][0][1];
-    const double J_c3 = coordinate_dofs[1] * FE3_C0_D01_Q6[0][0][0] + coordinate_dofs[5] * FE3_C0_D01_Q6[0][0][1];
-    const double J_c1 = coordinate_dofs[0] * FE3_C0_D01_Q6[0][0][0] + coordinate_dofs[4] * FE3_C0_D01_Q6[0][0][1];
-    const double J_c2 = coordinate_dofs[1] * FE3_C0_D01_Q6[0][0][0] + coordinate_dofs[3] * FE3_C0_D01_Q6[0][0][1];
+    const double J_c0 = coordinate_dofs[0] * FE3_C0_D01_Q3[0][0][0] + coordinate_dofs[2] * FE3_C0_D01_Q3[0][0][1];
+    const double J_c3 = coordinate_dofs[1] * FE3_C0_D01_Q3[0][0][0] + coordinate_dofs[5] * FE3_C0_D01_Q3[0][0][1];
+    const double J_c1 = coordinate_dofs[0] * FE3_C0_D01_Q3[0][0][0] + coordinate_dofs[4] * FE3_C0_D01_Q3[0][0][1];
+    const double J_c2 = coordinate_dofs[1] * FE3_C0_D01_Q3[0][0][0] + coordinate_dofs[3] * FE3_C0_D01_Q3[0][0][1];
     alignas(32) double sp[4];
     sp[0] = J_c0 * J_c3;
     sp[1] = J_c1 * J_c2;
     sp[2] = sp[0] + -1 * sp[1];
     sp[3] = std::abs(sp[2]);
     alignas(32) double BF0[3] = {};
-    for (int iq = 0; iq < 6; ++iq)
+    for (int iq = 0; iq < 3; ++iq)
     {
-        // Quadrature loop body setup (num_points=6)
-        // Unstructured varying computations for num_points=6
-        double w1 = 0.0;
-        for (int ic = 0; ic < 3; ++ic)
-            w1 += w[1][ic] * FE3_C0_Q6[0][iq][ic];
-        double w2 = 0.0;
-        for (int ic = 0; ic < 3; ++ic)
-            w2 += w[2][ic] * FE3_C0_Q6[0][iq][ic];
-        double w3 = 0.0;
-        for (int ic = 0; ic < 3; ++ic)
-            w3 += w[3][ic] * FE3_C0_Q6[0][iq][ic];
+        // Quadrature loop body setup (num_points=3)
+        // Unstructured varying computations for num_points=3
         double w0 = 0.0;
         for (int ic = 0; ic < 3; ++ic)
-            w0 += w[0][ic] * FE3_C0_Q6[0][iq][ic];
-        alignas(32) double sv6[5];
-        sv6[0] = 2 * w1 + -1 * w2;
-        sv6[1] = 15000 * w3 * w0;
-        sv6[2] = sv6[1] * w1;
-        sv6[3] = sv6[0] + sv6[2];
-        sv6[4] = sv6[3] * sp[3];
-        const double fw0 = sv6[4] * weights6[iq];
+            w0 += w[0][ic] * FE3_C0_Q3[0][iq][ic];
+        double w1 = 0.0;
+        for (int ic = 0; ic < 3; ++ic)
+            w1 += w[1][ic] * FE3_C0_Q3[0][iq][ic];
+        alignas(32) double sv3[2];
+        sv3[0] = 2 * w0 + -1 * w1;
+        sv3[1] = sv3[0] * sp[3];
+        const double fw0 = sv3[1] * weights3[iq];
         for (int i = 0; i < 3; ++i)
-            BF0[i] += fw0 * FE3_C0_Q6[0][iq][i];
+            BF0[i] += fw0 * FE3_C0_Q3[0][iq][i];
     }
     std::fill(A, A + 3, 0.0);
     for (int i = 0; i < 3; ++i)
@@ -2892,7 +2881,7 @@ public:
 
   const char * signature() const final override
   {
-    return "ae47a48e2b422fbd7cd721d7ffcabbe1b86277ccc2caf61aa27b1ff153e8c460caeced4e5df8efcae0020c911d992b7cac931d55ba691fb70cf2654af27d35f1";
+    return "2df81159412e16661b064ec316207b6a3f8fc3df3130d37f8ae9b9dcca410134dbc6a06ef28c44aeb858ff2824ce24bacd5d3acb7c19ee3c46b4911b7caa0f24";
   }
 
   std::size_t rank() const final override
@@ -3143,7 +3132,7 @@ public:
 
   const char * signature() const final override
   {
-    return "488bca93203a6cea14510631fef0d08c8ab08f480bbfb0923fe9c661d2784fc7c1044a15326f5307965d90feb3a522ad33c96cdf962911223a73f334ed4adba8";
+    return "6ea749d160b6aa6615bede379abb175bb4689a49713c1748a25131dae780790d768d171e917d2b1abfe3ad5e399731861c3280b4bf8747cedc87280978138750";
   }
 
   std::size_t rank() const final override
@@ -3153,16 +3142,16 @@ public:
 
   std::size_t num_coefficients() const final override
   {
-    return 4;
+    return 2;
   }
 
   std::size_t original_coefficient_position(std::size_t i) const final override
   {
-    if (i >= 4)
+    if (i >= 2)
     {
         throw std::runtime_error("Invalid original coefficient index.");
     }
-    static const std::vector<std::size_t> position = {0, 1, 2, 3};
+    static const std::vector<std::size_t> position = {0, 1};
     return position[i];
   }
 
@@ -3191,10 +3180,6 @@ public:
         return new wave_equation_finite_element_0();
     case 2:
         return new wave_equation_finite_element_0();
-    case 3:
-        return new wave_equation_finite_element_0();
-    case 4:
-        return new wave_equation_finite_element_0();
     default:
         return nullptr;
     }
@@ -3209,10 +3194,6 @@ public:
     case 1:
         return new wave_equation_dofmap_0();
     case 2:
-        return new wave_equation_dofmap_0();
-    case 3:
-        return new wave_equation_dofmap_0();
-    case 4:
         return new wave_equation_dofmap_0();
     default:
         return nullptr;
@@ -3805,13 +3786,9 @@ public:
 
 };
 
-typedef CoefficientSpace_dt Form_L_FunctionSpace_1;
+typedef CoefficientSpace_u_pr Form_L_FunctionSpace_1;
 
-typedef CoefficientSpace_u_pr Form_L_FunctionSpace_2;
-
-typedef CoefficientSpace_u_prpr Form_L_FunctionSpace_3;
-
-typedef CoefficientSpace_indicator Form_L_FunctionSpace_4;
+typedef CoefficientSpace_u_prpr Form_L_FunctionSpace_2;
 
 class Form_L: public dolfin::Form
 {
@@ -3819,7 +3796,7 @@ public:
 
   // Constructor
   Form_L(std::shared_ptr<const dolfin::FunctionSpace> V0):
-    dolfin::Form(1, 4), dt(*this, 0), u_pr(*this, 1), u_prpr(*this, 2), indicator(*this, 3)
+    dolfin::Form(1, 2), u_pr(*this, 0), u_prpr(*this, 1)
   {
     _function_spaces[0] = V0;
 
@@ -3827,15 +3804,13 @@ public:
   }
 
   // Constructor
-  Form_L(std::shared_ptr<const dolfin::FunctionSpace> V0, std::shared_ptr<const dolfin::GenericFunction> dt, std::shared_ptr<const dolfin::GenericFunction> u_pr, std::shared_ptr<const dolfin::GenericFunction> u_prpr, std::shared_ptr<const dolfin::GenericFunction> indicator):
-    dolfin::Form(1, 4), dt(*this, 0), u_pr(*this, 1), u_prpr(*this, 2), indicator(*this, 3)
+  Form_L(std::shared_ptr<const dolfin::FunctionSpace> V0, std::shared_ptr<const dolfin::GenericFunction> u_pr, std::shared_ptr<const dolfin::GenericFunction> u_prpr):
+    dolfin::Form(1, 2), u_pr(*this, 0), u_prpr(*this, 1)
   {
     _function_spaces[0] = V0;
 
-    this->dt = dt;
     this->u_pr = u_pr;
     this->u_prpr = u_prpr;
-    this->indicator = indicator;
 
     _ufc_form = std::make_shared<const wave_equation_form_1>();
   }
@@ -3847,14 +3822,10 @@ public:
   /// Return the number of the coefficient with this name
   virtual std::size_t coefficient_number(const std::string& name) const
   {
-    if (name == "dt")
+    if (name == "u_pr")
       return 0;
-    else if (name == "u_pr")
-      return 1;
     else if (name == "u_prpr")
-      return 2;
-    else if (name == "indicator")
-      return 3;
+      return 1;
 
     dolfin::dolfin_error("generated code for class Form",
                          "access coefficient data",
@@ -3868,13 +3839,9 @@ public:
     switch (i)
     {
     case 0:
-      return "dt";
-    case 1:
       return "u_pr";
-    case 2:
+    case 1:
       return "u_prpr";
-    case 3:
-      return "indicator";
     }
 
     dolfin::dolfin_error("generated code for class Form",
@@ -3886,16 +3853,12 @@ public:
   // Typedefs
   typedef Form_L_FunctionSpace_0 TestSpace;
   typedef Form_L_MultiMeshFunctionSpace_0 MultiMeshTestSpace;
-  typedef Form_L_FunctionSpace_1 CoefficientSpace_dt;
-  typedef Form_L_FunctionSpace_2 CoefficientSpace_u_pr;
-  typedef Form_L_FunctionSpace_3 CoefficientSpace_u_prpr;
-  typedef Form_L_FunctionSpace_4 CoefficientSpace_indicator;
+  typedef Form_L_FunctionSpace_1 CoefficientSpace_u_pr;
+  typedef Form_L_FunctionSpace_2 CoefficientSpace_u_prpr;
 
   // Coefficients
-  dolfin::CoefficientAssigner dt;
   dolfin::CoefficientAssigner u_pr;
   dolfin::CoefficientAssigner u_prpr;
-  dolfin::CoefficientAssigner indicator;
 };
 
 class MultiMeshForm_L: public dolfin::MultiMeshForm
@@ -3904,7 +3867,7 @@ public:
 
   // Constructor
   MultiMeshForm_L(std::shared_ptr<const dolfin::MultiMeshFunctionSpace> V0):
-    dolfin::MultiMeshForm(V0), dt(*this, 0), u_pr(*this, 1), u_prpr(*this, 2), indicator(*this, 3)
+    dolfin::MultiMeshForm(V0), u_pr(*this, 0), u_prpr(*this, 1)
   {
     // Create and add standard forms
     std::size_t num_parts = V0->num_parts(); // assume all equal and pick first
@@ -3922,8 +3885,8 @@ public:
   }
 
   // Constructor
-  MultiMeshForm_L(std::shared_ptr<const dolfin::MultiMeshFunctionSpace> V0, std::shared_ptr<const dolfin::GenericFunction> dt, std::shared_ptr<const dolfin::GenericFunction> u_pr, std::shared_ptr<const dolfin::GenericFunction> u_prpr, std::shared_ptr<const dolfin::GenericFunction> indicator):
-    dolfin::MultiMeshForm(V0), dt(*this, 0), u_pr(*this, 1), u_prpr(*this, 2), indicator(*this, 3)
+  MultiMeshForm_L(std::shared_ptr<const dolfin::MultiMeshFunctionSpace> V0, std::shared_ptr<const dolfin::GenericFunction> u_pr, std::shared_ptr<const dolfin::GenericFunction> u_prpr):
+    dolfin::MultiMeshForm(V0), u_pr(*this, 0), u_prpr(*this, 1)
   {
     // Create and add standard forms
     std::size_t num_parts = V0->num_parts(); // assume all equal and pick first
@@ -3937,10 +3900,8 @@ public:
     build();
 
     /// Assign coefficients
-    this->dt = dt;
     this->u_pr = u_pr;
     this->u_prpr = u_prpr;
-    this->indicator = indicator;
 
   }
 
@@ -3951,14 +3912,10 @@ public:
   /// Return the number of the coefficient with this name
   virtual std::size_t coefficient_number(const std::string& name) const
   {
-    if (name == "dt")
+    if (name == "u_pr")
       return 0;
-    else if (name == "u_pr")
-      return 1;
     else if (name == "u_prpr")
-      return 2;
-    else if (name == "indicator")
-      return 3;
+      return 1;
 
     dolfin::dolfin_error("generated code for class Form",
                          "access coefficient data",
@@ -3972,13 +3929,9 @@ public:
     switch (i)
     {
     case 0:
-      return "dt";
-    case 1:
       return "u_pr";
-    case 2:
+    case 1:
       return "u_prpr";
-    case 3:
-      return "indicator";
     }
 
     dolfin::dolfin_error("generated code for class Form",
@@ -3990,16 +3943,12 @@ public:
   // Typedefs
   typedef Form_L_FunctionSpace_0 TestSpace;
   typedef Form_L_MultiMeshFunctionSpace_0 MultiMeshTestSpace;
-  typedef Form_L_FunctionSpace_1 CoefficientSpace_dt;
-  typedef Form_L_FunctionSpace_2 CoefficientSpace_u_pr;
-  typedef Form_L_FunctionSpace_3 CoefficientSpace_u_prpr;
-  typedef Form_L_FunctionSpace_4 CoefficientSpace_indicator;
+  typedef Form_L_FunctionSpace_1 CoefficientSpace_u_pr;
+  typedef Form_L_FunctionSpace_2 CoefficientSpace_u_prpr;
 
   // Coefficients
-  dolfin::MultiMeshCoefficientAssigner dt;
   dolfin::MultiMeshCoefficientAssigner u_pr;
   dolfin::MultiMeshCoefficientAssigner u_prpr;
-  dolfin::MultiMeshCoefficientAssigner indicator;
 };
 
 // Class typedefs
