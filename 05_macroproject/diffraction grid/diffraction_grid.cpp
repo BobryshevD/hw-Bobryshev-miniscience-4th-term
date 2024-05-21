@@ -8,46 +8,62 @@
 
 using namespace dolfin;
 
-class Boundary_Func : public Expression //Функция на границе
+class Boundary_Func : public Expression // Функция на границе
 {
 public:
   Boundary_Func() : t(0) {}
   // Define boundary condition
   void eval(Array<double> &values, const Array<double> &x) const
   {
-    double c = 1.0 / 40;
-    if (x[0] < c - 1)
-      values[0] = 30 * cos(800 * t);
-    else
-      values[0] = 0;
+      values[0] = 30 * cos(3000 * t);
   }
   double t;
 };
 
-class DirichletBoundary : public SubDomain
+class DirichletBoundary : public SubDomain // граница
 {
+  bool wavering_zones(const Array<double> &x, double b, int N) const
+  {
+    bool indicator = false;
+    for (int i = 0; i < N; i++)
+      if ((x[1] > ((-(2 * N + 1) / 2 + 2 * i) * b)) && (x[1] < ((-(2 * N + 1) / 2 + (2 * i + 1)) * b)))
+        indicator = true;
+    return indicator;
+  }
+
   bool inside(const Array<double> &x, bool on_boundary) const
   {
-    double c = 1.0 / 40;
-    return (x[0] < c - 1);
+    double c = 0.005;
+    return ((x[0] < c) && wavering_zones(x, 0.02, 25));
   }
 };
 
-class Indicator : public Expression //экран
+class Indicator : public Expression // экран
 {
-    void eval(Array<double> &values, const Array<double> &x) const
-    {
-        if (((x[1] > 0.1) or (x[1] < -0.1)) and ((x[0] > -0.5) and (x[0] < -0.3))) values[0] = 2*x[0] + 1;
-        //else if (x[0] < 0) values[0] = 2*x[0] + 1;
-        else values[0] = 0;
-    }
+  void eval(Array<double> &values, const Array<double> &x) const
+  {
+    double E = 0.03; // трение
+    double c = 0.03;
+    // double top = 1; //верхняя грань по y
+    // double b = 0.05; //размер щели; d - период, d = 2*b
+    // if (((x[1] > 9/2*b) or (x[1] < -9/2*b) or ((x[1] < 7*b/2) and (x[1] > 5*b/2)) or ((x[1] < 3*b/2) and (x[1] > b/2)) or
+    // ((x[1] < -b/2) and (x[1] > -3*b/2)) or ((x[1] < -5*b/2) and (x[1] > -7*b/2))) and ((x[0] > -0.7) and (x[0] < -0.65))) values[0] = c;
+    // else if ((x[0] > -0.7) && ((x[1] > top-0.1) || (x[1]) < -top+0.1)) values[0] = c;
+    // else if (x[0] > 0.85) values[0] = c;
+    // //else if (x[0] < 0) values[0] = 2*x[0] + 1;
+    // else values[0] = 0;
+    // if (x[0] > 1.5-c) values[0] = E;
+    // else if ((x[1] > x[0] + 1 - c) || (x[1] < -x[0] - 1 + c)) values[0] = E;
+    // else values[0] = 0;
+    values[0]= 0;
+  }
 };
 
 int main()
 {
-  std::array<Point, 2> a1 = {Point(-1, -1.5), Point(3, 1.5)};
-  std::array<long unsigned int, 2> a2 = {320, 250};
-  auto mesh = std::make_shared<Mesh>(RectangleMesh::create(a1, a2, CellType::Type::triangle));
+  // std::array<Point, 2> a1 = {Point(-1, -1), Point(1, 1)};
+  // std::array<long unsigned int, 2> a2 = {350, 500};
+  auto mesh = std::make_shared<Mesh>("mesh3.xml");
   auto V = std::make_shared<Wave_equation::FunctionSpace>(mesh);
 
   auto u0 = std::make_shared<Boundary_Func>();
@@ -68,7 +84,6 @@ int main()
   Add::BilinearForm a_add(V, V);
   Add::LinearForm L_add(V);
 
-
   auto u = std::make_shared<Function>(V);
   auto I = std::make_shared<Function>(V);     // интенсивность, вычисленная на этом шаге
   auto I_pr = std::make_shared<Function>(V);  // интенсивность на предыдущем шаге
@@ -78,34 +93,35 @@ int main()
   a.indicator = ind;
   L.indicator = ind;
 
-  int steps = 10000;
+  int steps = 100000;
   for (int i = 0; i < steps; i++)
   {
     u0->t = i * dt;
     DirichletBC bc(V, u0, boundary);
     L.u_pr = u_pr;
     L.u_prpr = u_prpr;
-  //  L.g = g;
-    solve(a == L, *u, bc);
-    L_sq.u = u;
-    solve(a_sq == L_sq, *I);
+    //  L.g = g;
+    solve(a == L, *u, bc); //основное вычисление
+
+    //L_sq.u = u;
+    //solve(a_sq == L_sq, *I);
     std::cout << u0->t << '\n';
 
     L_add.I_pr = I_pr;
-    L_add.I_all = I;
+    L_add.E = u;
     solve(a_add == L_add, *I_all);
     *I_pr = *I_all;
-    if (i%5 == 0)
+    if (i % 25 == 0)
     {
-      std::string fileName1 = "snapshots_diffraction_grid/wave_equation-" + std::to_string(i/5) + ".pvd";
+      std::string fileName1 = "snapshots_diffraction_grid_N=25_omega=3000/wave_equation-" + std::to_string(i / 25) + ".pvd";
       File file1(fileName1);
       file1 << *u;
     }
-    if (i%50 == 0)
+    if (i % 125 == 0)
     {
-        std::string fileName = "snapshots_diffraction_grid_I/wave_equation-" + std::to_string(i/5) + ".pvd"; //строит суммы квадратов напряжённостей поля
-        File file(fileName);
-        file << *I_all;
+      std::string fileName = "snapshots_diffraction_grid_I_N=25_omega=3000/wave_equation-" + std::to_string(i / 125) + ".pvd"; // строит суммы квадратов напряжённостей поля
+      File file(fileName);
+      file << *I_all;
     }
     *u_prpr = *u_pr;
     *u_pr = *u;
@@ -118,7 +134,7 @@ int main()
   L_mean.i = i;
   L_mean.I_all = I_all;
   solve(a_mean == L_mean, *I_final);
-  std::string fileName2 = "snapshots_Yong's_experiment/I.pvd"; //Строит именно распределение интенсивности
+  std::string fileName2 = "snapshots_Yong's_experiment/I.pvd"; // Строит именно распределение интенсивности
   File file2(fileName2);
   file2 << *I_final;
 

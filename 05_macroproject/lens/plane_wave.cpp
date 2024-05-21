@@ -12,7 +12,7 @@ public:
     // Define boundary condition
     void eval(Array<double> &values, const Array<double> &x) const
     {
-        if (t < 0.04) values[0] = 30 * sin(300 * t);
+        if (t < 0.04) values[0] = 30 * sin(800 * t);
         else values[0] = 0;   
     }
     double t;
@@ -31,8 +31,19 @@ class Indicator : public Expression //!!!Область с другим пока
 {
     void eval(Array<double> &values, const Array<double> &x) const
     {
-        if (2*x[0] - x[1] > 0) values[0] = 1;
-        //else if (x[0] < 0) values[0] = 2*x[0] + 1;
+        ///one
+        ///if ((((2.7-x[0])*(2.7-x[0])) + x[1]*x[1] < 3*3) and ( x[0] <= 0)) values[0] = 1;
+        ///if ((((2.7+x[0])*(2.7+x[0])) + x[1]*x[1] < 3*3) and ( x[0] >= 0)) values[0] = 1;
+        ///two
+        //if ((((9.9-x[0])*(9.9-x[0])) + x[1]*x[1] < 100) and ( x[0] <= 0)) values[0] = 1;
+        //if ((((9.9+x[0])*(9.9+x[0])) + x[1]*x[1] < 100) and ( x[0] >= 0)) values[0] = 1;
+        ///three
+        if ((((1.4-x[0])*(1.4-x[0])) + x[1]*x[1] < 1.5*1.5) and ( x[0] <= 0)) values[0] = 1;
+        if ((((1.4+x[0])*(1.4+x[0])) + x[1]*x[1] < 1.5*1.5) and ( x[0] >= 0)) values[0] = 1;
+        ///four
+        //if ((((1.4+x[0])*(1.4+x[0])) + x[1]*x[1] < 1.5*1.5) and ( x[0] >= 0)) values[0] = 1;
+        ///five
+        //if ((((2.7+x[0])*(2.7+x[0])) + x[1]*x[1] < 9) and ( x[0] >= 0)) values[0] = 1;
         else values[0] = 0;
     }
 };
@@ -41,7 +52,7 @@ int main()
 {
     //Create mesh
     std::array<Point, 2> a1 = {Point(-1, -1), Point(2, 1)};
-    std::array<long unsigned int, 2> a2 = {100, 150};
+    std::array<long unsigned int, 2> a2 = {250, 150};
     auto mesh = std::make_shared<Mesh>(RectangleMesh::create(a1, a2, CellType::Type::triangle));
     auto V = std::make_shared<Wave_equation::FunctionSpace>(mesh);
 
@@ -50,7 +61,7 @@ int main()
     auto boundary = std::make_shared<DirichletBoundary>();
     DirichletBC bc(V, u0, boundary);
 
-    double dt = 0.0001;
+    double dt = 0.00005;
     //создаём функции для расчёта
     auto u_pr = std::make_shared<Function>(V);
     auto u_prpr = std::make_shared<Function>(V);
@@ -66,7 +77,7 @@ int main()
     //L.dt = k;
     a.indicator = ind;
     //L.indicator = ind;
-    for (int i = 0; i < 10000; i++)
+    for (int i = 0; i < 5000; i++)
     {
         u0->t = i * dt; //обозначение момента времени для граничной функции
         DirichletBC bc(V, u0, boundary); //создаём соответствующие граничные условия
@@ -77,7 +88,7 @@ int main()
         std::cout << u0->t << '\n';
         if (i%5 == 0)
         {
-        std::string fileName = "snapshots_plane_wave/Wave_equation-" + std::to_string(i/5) + ".pvd"; //сохраняем
+        std::string fileName = "snapshots_plane_wave3/Wave_equation-" + std::to_string(i/5) + ".pvd"; //сохраняем
         File file(fileName);
         file << *u;
         }

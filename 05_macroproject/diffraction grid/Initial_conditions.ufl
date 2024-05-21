@@ -1,0 +1,20 @@
+from ufl_legacy import (Coefficient, ds, dot, dx, FiniteElement,
+                 grad, inner, lhs, rhs,
+                 triangle, TestFunction, TrialFunction)
+
+
+element = FiniteElement("Lagrange", triangle, 1)
+
+u = TrialFunction(element)
+v = TestFunction(element)
+ic = Coefficient(element)
+
+a = u*v*dx;
+L = ic*v*dx;
+
+# Before the form file can be used in the C++ program, it must be
+# compiled using FFC by running (on the command-line):
+# 
+# .. code-block:: sh
+# 
+#    ffc -l dolfin Initial_conditions.ufl

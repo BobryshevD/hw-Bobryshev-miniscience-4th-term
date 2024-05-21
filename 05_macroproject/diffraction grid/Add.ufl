@@ -8,10 +8,10 @@ element = FiniteElement("Lagrange", triangle, 1)
 I = TrialFunction(element)
 v = TestFunction(element)
 I_pr = Coefficient(element)
-I_all = Coefficient(element)
+E = Coefficient(element) #в данный момент
 
 a = I*v*dx;
-L = (I_all + I_pr)*v*dx;
+L = (E*E + I_pr)*v*dx;
 
 # Before the form file can be used in the C++ program, it must be
 # compiled using FFC by running (on the command-line):
