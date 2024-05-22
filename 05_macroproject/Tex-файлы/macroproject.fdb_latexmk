@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1716407997 "/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/Tex-файлы/macroproject.tex" "macroproject.pdf" "macroproject" 1716407998
+["pdflatex"] 1716408338 "/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/Tex-файлы/macroproject.tex" "macroproject.pdf" "macroproject" 1716408339
   "/etc/texmf/web2c/texmf.cnf" 1693993983 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/larm0500.tfm" 1716199841 3252 bc0f8cc163ba94bbce20e59f671a255d ""
   "/home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm" 1693994432 3248 7c0b9d76a2cd84ed06764a4c6eea5de4 ""
@@ -11,7 +11,7 @@
   "/home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm" 1693994093 3240 c2435f2b5cd66d4930bc29b8df87967e ""
   "/home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1693994417 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "/home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/latt0900.tfm" 1716199850 1272 e497c921cae2e97681be4c17c26e4845 ""
-  "/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/Tex-файлы/macroproject.tex" 1716407996 29532 d68c298852c2b46e226a7f118f02d6e3 ""
+  "/home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/Tex-файлы/macroproject.tex" 1716408338 29532 d68c298852c2b46e226a7f118f02d6e3 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -188,8 +188,8 @@
   "intensity.jpg" 1716385244 32331 30f64691b41e301738792417870aaa8d ""
   "literat.sty" 1716199817 164 39a8902336686aec57f606018276dfd9 ""
   "ljm.sty" 1716402435 15989 bd1b73ac1d11b54529222147838162f7 ""
-  "macroproject.aux" 1716407998 9525 142a1ca0751b4132fdce5be7e5dfc5ae "pdflatex"
-  "macroproject.tex" 1716407996 29532 d68c298852c2b46e226a7f118f02d6e3 ""
+  "macroproject.aux" 1716408339 9525 142a1ca0751b4132fdce5be7e5dfc5ae "pdflatex"
+  "macroproject.tex" 1716408338 29532 d68c298852c2b46e226a7f118f02d6e3 ""
   "refraction.png" 1716406177 88039 5f901dfe48546d2513e078f25c3fea47 ""
   (generated)
   "macroproject.aux"
