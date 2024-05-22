@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  22 MAY 2024 21:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  22 MAY 2024 22:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -654,18 +654,25 @@ Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \tabwidth=\dimen264
 \tbwdth=\dimen265
 \remarktopsep=\dimen266
+) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen267
+\WF@size=\dimen268
+\c@WF@wrappedlines=\count302
+\WF@box=\box69
+\WF@everypar=\toks56
+Package: wrapfig 2003/01/31  v 3.6
 )
-LaTeX Font Info:    Trying to load font information for T2A+tli on input line 23.
-LaTeX Font Info:    No file T2Atli.fd. on input line 23.
+LaTeX Font Info:    Trying to load font information for T2A+tli on input line 24.
+LaTeX Font Info:    No file T2Atli.fd. on input line 24.
 
 
 LaTeX Font Warning: Font shape `T2A/tli/m/n' undefined
-(Font)              using `T2A/cmr/m/n' instead on input line 23.
+(Font)              using `T2A/cmr/m/n' instead on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count302
-\l__pdf_internal_box=\box69
+\l__color_backend_stack_int=\count303
+\l__pdf_internal_box=\box70
 )
 
 LaTeX Warning: Unused global option(s):
@@ -681,45 +688,51 @@ LaTeX Warning: Label `fig:1' multiply defined.
 
 LaTeX Warning: Label `fig:1' multiply defined.
 
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
 )
 \openout1 = `macroproject.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-Class revtex4 Info: Unrecognized array package. Please update this document class! (Proceeding with fingers crossed.) on input line 23.
-Class revtex4 Info: cite was not loaded (OK!) on input line 23.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+Class revtex4 Info: Unrecognized array package. Please update this document class! (Proceeding with fingers crossed.) on input line 24.
+Class revtex4 Info: cite was not loaded (OK!) on input line 24.
+Class revtex4 Info: multicol was not loaded (OK!) on input line 24.
  (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-LaTeX Info: Redefining \th on input line 23.
+LaTeX Info: Redefining \th on input line 24.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count303
-\scratchdimen=\dimen267
-\scratchbox=\box70
-\nofMPsegments=\count304
-\nofMParguments=\count305
-\everyMPshowfont=\toks56
-\MPscratchCnt=\count306
-\MPscratchDim=\dimen268
-\MPnumerator=\count307
-\makeMPintoPDFobject=\count308
-\everyMPtoPDFconversion=\toks57
+\scratchcounter=\count304
+\scratchdimen=\dimen269
+\scratchbox=\box71
+\nofMPsegments=\count305
+\nofMParguments=\count306
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count307
+\MPscratchDim=\dimen270
+\MPnumerator=\count308
+\makeMPintoPDFobject=\count309
+\everyMPtoPDFconversion=\toks58
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -728,36 +741,36 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 LaTeX Font Warning: Font shape `T2A/cmr/m/up' undefined
-(Font)              using `T2A/cmr/m/n' instead on input line 23.
+(Font)              using `T2A/cmr/m/n' instead on input line 24.
 
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 23.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 24.
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 23.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 24.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Package xypdf Info: Line width: 0.43799pt on input line 23.
+Package xypdf Info: Line width: 0.43799pt on input line 24.
 
 
 LaTeX Font Warning: Font shape `T2A/tli/b/n' undefined
-(Font)              using `T2A/tli/m/n' instead on input line 50.
+(Font)              using `T2A/tli/m/n' instead on input line 51.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
 File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
 )
-Underfull \hbox (badness 1783) in paragraph at lines 50--54
+Underfull \hbox (badness 1783) in paragraph at lines 51--55
  \T2A/tli/m/n/10 возникающих при решении волнового уравнения. Численное решение выполнено 
  []
 
@@ -766,101 +779,167 @@ Class revtex4 Warning: Assuming \noaffiliation for \IeC {\CYRS }.~\IeC {\CYRM }.
 
 
 LaTeX Font Warning: Font shape `T2A/tli/m/it' undefined
-(Font)              using `T2A/tli/m/n' instead on input line 62.
+(Font)              using `T2A/tli/m/n' instead on input line 63.
 
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 62.
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 63.
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-Underfull \hbox (badness 3724) in paragraph at lines 67--72
-\T2A/tli/m/n/10.95 При помощи волнового уравнения описываются различные колебательные процессы,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--72
-
- []
-
-
-Underfull \hbox (badness 1509) in paragraph at lines 74--97
+Underfull \hbox (badness 1509) in paragraph at lines 68--95
 \T2A/cmr/m/up/10.95 При решении волнового уравнения возникает ряд интересных эффектов. Например,
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 74--97
+Underfull \hbox (badness 2894) in paragraph at lines 68--95
 \T2A/cmr/m/up/10.95 выполняется принцип Гюйгенса-Френеля: каждая точка волнового фронта является
  []
 
 
-Underfull \hbox (badness 1117) in paragraph at lines 74--97
+Underfull \hbox (badness 1117) in paragraph at lines 68--95
 \T2A/cmr/m/up/10.95 на достаточно удалјнном экране можно наблюдать последовательность светлых полос.
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 74--97
+Underfull \hbox (badness 1642) in paragraph at lines 68--95
 \T2A/cmr/m/up/10.95 скорость распространения, поэтому у преломлјнной волны угол между направлением
  []
 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
-(Font)              using `T2A/tli/m/it' instead on input line 100.
+(Font)              using `T2A/tli/m/it' instead on input line 103.
 
 
-Underfull \hbox (badness 2707) in paragraph at lines 101--105
+Underfull \hbox (badness 2042) in paragraph at lines 106--111
+\T2A/tli/m/it/10.95 В данной работе используется пропускающая дифракционная решјтка, состоящая из
+ []
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 106--111
 \T2A/tli/m/it/10.95 полосок шириной b. Величина d = a + b называется периодом дифракционной
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<intensity.jpg, id=19, 621.32124pt x 380.42125pt>
+<intensity.jpg, id=17, 621.32124pt x 380.42125pt>
 File: intensity.jpg Graphic file (type jpg)
 <use intensity.jpg>
-Package pdftex.def Info: intensity.jpg  used on input line 120.
+Package pdftex.def Info: intensity.jpg  used on input line 126.
 (pdftex.def)             Requested size: 284.52756pt x 174.20644pt.
 
-Underfull \hbox (badness 1132) in paragraph at lines 114--126
-\OML/cmm/m/it/10.95 ^^U$ \T2A/tli/m/it/10.95 - длина волны падающего света. На экране получается следующее распределение
- []
-
-
 LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
-(Font)              using `T2A/tli/m/it' instead on input line 130.
+(Font)              using `T2A/tli/m/it' instead on input line 136.
 
-<Spherical_aberration.jpg, id=20, 1084.05pt x 401.5pt>
+[2 <./intensity.jpg>]
+<Spherical_aberration.jpg, id=23, 1084.05pt x 401.5pt>
 File: Spherical_aberration.jpg Graphic file (type jpg)
 <use Spherical_aberration.jpg>
-Package pdftex.def Info: Spherical_aberration.jpg  used on input line 144.
+Package pdftex.def Info: Spherical_aberration.jpg  used on input line 150.
 (pdftex.def)             Requested size: 284.52756pt x 105.38pt.
-[2 <./intensity.jpg>]
+
 
 LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
-(Font)              using `T2A/tli/m/it' instead on input line 155.
+(Font)              using `T2A/tli/m/it' instead on input line 159.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--199
+Underfull \hbox (badness 10000) in paragraph at lines 168--203
 \T2A/tli/m/it/10.95 Погасить волну можно несколькими способами. Первый способ - добавление
  []
 
 [3 <./Spherical_aberration.jpg>]
 
 LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
-(Font)              using `T2A/tli/m/it' instead on input line 200.
+(Font)              using `T2A/tli/m/it' instead on input line 207.
 
 <Field_with_one_gap.png, id=29, 1197.47375pt x 636.3775pt>
 File: Field_with_one_gap.png Graphic file (type png)
 <use Field_with_one_gap.png>
-Package pdftex.def Info: Field_with_one_gap.png  used on input line 213.
-(pdftex.def)             Requested size: 369.88582pt x 196.56613pt.
+Package pdftex.def Info: Field_with_one_gap.png  used on input line 220.
+(pdftex.def)             Requested size: 312.9803pt x 166.32817pt.
 <N=15__27.png, id=30, 953.5625pt x 636.3775pt>
 File: N=15__27.png Graphic file (type png)
 <use N=15__27.png>
-Package pdftex.def Info: N=15__27.png  used on input line 226.
-(pdftex.def)             Requested size: 369.88582pt x 246.85591pt.
+Package pdftex.def Info: N=15__27.png  used on input line 232.
+(pdftex.def)             Requested size: 284.52756pt x 189.88542pt.
+
+Underfull \hbox (badness 1389) in paragraph at lines 225--243
+\T2A/tli/m/it/10.95 и прошедшей сквозь экран волн, не нужно просчитывать область между экраном и
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 225--243
+\T2A/tli/m/it/10.95 К сожалению, получить распределение интенсивности на достаточном расстоянии от
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--243
+
+ []
+
 [4 <./Field_with_one_gap.png>]
 
 LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
-(Font)              using `T2A/tli/m/it' instead on input line 238.
+(Font)              using `T2A/tli/m/it' instead on input line 245.
 
-[5 <./N=15__27.png>] (./macroproject.aux)
+<refraction.png, id=34, 247.67531pt x 355.3275pt>
+File: refraction.png Graphic file (type png)
+<use refraction.png>
+Package pdftex.def Info: refraction.png  used on input line 248.
+(pdftex.def)             Requested size: 113.81102pt x 163.27911pt.
+<Lens.png, id=36, 465.23813pt x 310.91156pt>
+File: Lens.png Graphic file (type png)
+<use Lens.png>
+Package pdftex.def Info: Lens.png  used on input line 267.
+(pdftex.def)             Requested size: 227.62204pt x 152.11552pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 посредством проведения базовых исследований с
+ []
+
+
+Underfull \hbox (badness 7486) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 линзы, что приводило к дифракции волны, не
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 Это помешало проведению точных наблюдений,
+ []
+
+
+Underfull \hbox (badness 7047) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 света на результаты эксперимента было принято
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 решение разместить диафрагму на оси линзы.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 Таким образом, за линзой оказывалась только
+ []
+
+
+Underfull \hbox (badness 3724) in paragraph at lines 253--278
+ \T2A/tli/m/it/10.95 Следующим шагом предполагается выполнение проверки соответствия фокусных
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 253--278
+\T2A/tli/m/it/10.95 расстояний линз, путем сравнения значения, вычисленного по формуле тонкой линзы
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./N=15__27.png> <./refraction.png>]
+Underfull \hbox (badness 2478) in paragraph at lines 282--311
+\T2A/tli/m/it/10.95 хорошо согласуется с экспериментальными данными, что подтверждает корректность
+ []
+
+[6 <./Lens.png>] (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+) [7] (./macroproject.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -869,18 +948,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12432 strings out of 478287
- 180492 string characters out of 5849290
- 523147 words of memory out of 5000000
- 30353 multiletter control sequences out of 15000+600000
+ 12785 strings out of 478287
+ 184995 string characters out of 5849290
+ 525400 words of memory out of 5000000
+ 30697 multiletter control sequences out of 15000+600000
  497650 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,79p,1574b,679s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,13n,79p,1594b,679s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on macroproject.pdf (5 pages, 720875 bytes).
+Output written on macroproject.pdf (7 pages, 958431 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
