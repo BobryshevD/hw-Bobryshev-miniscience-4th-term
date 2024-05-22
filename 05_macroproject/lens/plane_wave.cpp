@@ -12,7 +12,9 @@ public:
     // Define boundary condition
     void eval(Array<double> &values, const Array<double> &x) const
     {
-        if (t < 0.04) values[0] = 30 * sin(800 * t);
+        double c = 1.0/40;
+        if (x[0] < c-1)
+        {    if (t < 0.04) values[0] = 30 * sin(800 * t);}
         else values[0] = 0;   
     }
     double t;
@@ -23,7 +25,7 @@ class DirichletBoundary : public SubDomain //граница
     bool inside(const Array<double> &x, bool on_boundary) const
     {
         double c = 1.0 / 40;
-        return (x[0] < c - 1);
+        return ((x[0] < c - 1) or ((x[0] > -c-0.1) and (x[0] < c-0.1) and ((x[1] > 0.25) or (x[1] < -0.25))));
     }
 };
 
@@ -52,7 +54,7 @@ int main()
 {
     //Create mesh
     std::array<Point, 2> a1 = {Point(-1, -1), Point(2, 1)};
-    std::array<long unsigned int, 2> a2 = {250, 150};
+    std::array<long unsigned int, 2> a2 = {200, 200};
     auto mesh = std::make_shared<Mesh>(RectangleMesh::create(a1, a2, CellType::Type::triangle));
     auto V = std::make_shared<Wave_equation::FunctionSpace>(mesh);
 

@@ -1,9 +1,9 @@
-PWD /home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject
+PWD /home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/Tex-файлы
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/macroproject.tex
+INPUT /home/dmitriy/Рабочий стол/Учёба/прога 4 семестр/homework/05_macroproject/Tex-файлы/macroproject.tex
 OUTPUT macroproject.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/revtex4/revtex4.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/revtex4/revtex4.cls
@@ -730,11 +730,11 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
 INPUT /home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm
-INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
 INPUT /home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
@@ -789,11 +789,14 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/latt0900.tfm
-INPUT /home/dmitriy/.texlive2021/texmf-var/fonts/tfm/lh/lh-t2a/latt1000.tfm
 OUTPUT macroproject.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT macroproject.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT /usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb
 INPUT /usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb
 INPUT /usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb
@@ -803,4 +806,3 @@ INPUT /usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb
 INPUT /usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb
 INPUT /usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb
 INPUT /usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb
-INPUT /usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb
