@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  22 MAY 2024 16:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  22 MAY 2024 19:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -671,7 +671,11 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [nofloats].
 
-(./macroproject.aux)
+(./macroproject.aux
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+)
 \openout1 = `macroproject.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
@@ -791,24 +795,71 @@ Underfull \hbox (badness 1642) in paragraph at lines 74--97
 \T2A/cmr/m/up/10.95 скорость распространения, поэтому у преломлјнной волны угол между направлением
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./macroproject.aux)
+
+LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
+(Font)              using `T2A/tli/m/it' instead on input line 100.
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 101--105
+\T2A/tli/m/it/10.95 полосок шириной b. Величина d = a + b называется периодом дифракционной
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<intensity.jpg, id=19, 621.32124pt x 380.42125pt>
+File: intensity.jpg Graphic file (type jpg)
+<use intensity.jpg>
+Package pdftex.def Info: intensity.jpg  used on input line 120.
+(pdftex.def)             Requested size: 284.52756pt x 174.20644pt.
+
+Underfull \hbox (badness 1132) in paragraph at lines 114--126
+\OML/cmm/m/it/10.95 ^^U$ \T2A/tli/m/it/10.95 - длина волны падающего света. На экране получается следующее распределение
+ []
+
+
+LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
+(Font)              using `T2A/tli/m/it' instead on input line 130.
+
+<Spherical_aberration.jpg, id=20, 1084.05pt x 401.5pt>
+File: Spherical_aberration.jpg Graphic file (type jpg)
+<use Spherical_aberration.jpg>
+Package pdftex.def Info: Spherical_aberration.jpg  used on input line 144.
+(pdftex.def)             Requested size: 284.52756pt x 105.38pt.
+[2 <./intensity.jpg>]
+
+LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
+(Font)              using `T2A/tli/m/it' instead on input line 155.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--196
+\T2A/tli/m/it/10.95 Погасить волну можно несколькими способами. Первый способ - добавление
+ []
+
+[3 <./Spherical_aberration.jpg>]
+
+LaTeX Font Warning: Font shape `T2A/tli/m/sl' undefined
+(Font)              using `T2A/tli/m/it' instead on input line 197.
+
+[4] (./macroproject.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 12386 strings out of 478287
- 179668 string characters out of 5849290
- 522030 words of memory out of 5000000
- 30313 multiletter control sequences out of 15000+600000
+ 12406 strings out of 478287
+ 180053 string characters out of 5849290
+ 523056 words of memory out of 5000000
+ 30330 multiletter control sequences out of 15000+600000
  497650 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,1574b,679s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on macroproject.pdf (2 pages, 177802 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb>
+Output written on macroproject.pdf (4 pages, 327532 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
