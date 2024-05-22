@@ -801,6 +801,16 @@ INPUT ./Spherical_aberration.jpg
 INPUT Spherical_aberration.jpg
 INPUT ./Spherical_aberration.jpg
 INPUT ./Spherical_aberration.jpg
+INPUT ./Field_with_one_gap.png
+INPUT ./Field_with_one_gap.png
+INPUT Field_with_one_gap.png
+INPUT ./Field_with_one_gap.png
+INPUT ./Field_with_one_gap.png
+INPUT ./N=15__27.png
+INPUT ./N=15__27.png
+INPUT N=15__27.png
+INPUT ./N=15__27.png
+INPUT ./N=15__27.png
 INPUT macroproject.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
