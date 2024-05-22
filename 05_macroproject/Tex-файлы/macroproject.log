@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  22 MAY 2024 22:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  22 MAY 2024 22:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -694,6 +694,12 @@ LaTeX Warning: Label `fig:1' multiply defined.
 
 LaTeX Warning: Label `fig:1' multiply defined.
 
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
 )
 \openout1 = `macroproject.aux'.
 
@@ -937,9 +943,20 @@ Underfull \hbox (badness 2478) in paragraph at lines 282--311
 \T2A/tli/m/it/10.95 хорошо согласуется с экспериментальными данными, что подтверждает корректность
  []
 
-[6 <./Lens.png>] (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+[6 <./Lens.png>]
+<N=9_solution.png, id=45, 1163.34625pt x 633.36626pt>
+File: N=9_solution.png Graphic file (type png)
+<use N=9_solution.png>
+Package pdftex.def Info: N=9_solution.png  used on input line 333.
+(pdftex.def)             Requested size: 284.52756pt x 154.91032pt.
+<N=25__25.png, id=46, 970.62625pt x 626.34pt>
+File: N=25__25.png Graphic file (type png)
+<use N=25__25.png>
+Package pdftex.def Info: N=25__25.png  used on input line 340.
+(pdftex.def)             Requested size: 284.52756pt x 183.60272pt.
+ (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-) [7] (./macroproject.aux)
+) [7 <./N=9_solution.png> <./N=25__25.png>] (./macroproject.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -948,18 +965,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12785 strings out of 478287
- 184995 string characters out of 5849290
+ 12799 strings out of 478287
+ 185253 string characters out of 5849290
  525400 words of memory out of 5000000
- 30697 multiletter control sequences out of 15000+600000
+ 30709 multiletter control sequences out of 15000+600000
  497650 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,13n,79p,1594b,679s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on macroproject.pdf (7 pages, 958431 bytes).
+Output written on macroproject.pdf (7 pages, 1309822 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
+ 115 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
